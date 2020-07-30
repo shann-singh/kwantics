@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onProgressUpdate(String... str) {
-//            Log.d("VS", "from progress" + str);
             int intIndex = str[0].indexOf("finish");
             if (intIndex != -1) {
                 textView.append(str[0] + "FINISH");
