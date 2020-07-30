@@ -27,11 +27,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Handler UIHandler;
-
-    Thread Thread1 = null;
-    Thread Thread2 = null;
-    Handler handler = new Handler();
 
     public static final String address = "localhost";
     public static final int port = 7080;
