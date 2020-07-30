@@ -28,9 +28,6 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
 
-    public static final String address = "localhost";
-    public static final int port = 7080;
-
     private Button startButton, stopButton;
     private TextView textView;
 
