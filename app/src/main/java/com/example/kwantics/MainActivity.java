@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
     public void stopRecording() {
         status = false;
         recorder.release();
-        Log.d("VS", "Recorder released");
     }
 
 
@@ -105,30 +104,22 @@ public class MainActivity extends AppCompatActivity {
 
                 dataOutputStream = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
                 dataInputStream = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
-                Log.d("VS", "Address retrieved");
 
                 if (minBufSize != AudioRecord.ERROR_BAD_VALUE) {
                     recorder = new AudioRecord(MediaRecorder.AudioSource.MIC, sampleRate, channelConfig, audioFormat, minBufSize);
-                    Log.d("VS", "Recorder initialized");
                 }
 
                 if (recorder.getState() == AudioRecord.STATE_INITIALIZED) {
-                    Log.d("VS", "Recorder working");
                     recorder.startRecording();
                 }
 
                 while (status == true) {
 
-                    //reading data from MIC into buffer
                     int bufferReadResult = recorder.read(buffer, 0, buffer.length);
-
-                    Log.d("VS", "DataOutputStream " + bufferReadResult);
 
                     dataOutputStream.write(buffer, 0, bufferReadResult);
 
                     dataOutputStream.flush();
-
-                    Log.d("VS", "message : " + dataInputStream.available());
 
                     if (dataInputStream.available() > 0) {
                         String str = dataInputStream.readLine();
