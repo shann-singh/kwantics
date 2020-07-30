@@ -134,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("VS", "message : " + dataInputStream.available());
 
                     if (dataInputStream.available() > 0) {
-//                        Log.d("VS", "message : " + dataInputStream.readLine());
                         String str = dataInputStream.readLine();
                         publishProgress(str);
                         try {
